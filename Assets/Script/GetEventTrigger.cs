@@ -25,35 +25,17 @@ public class GetEventTrigger : MonoBehaviour
             switch (name)
             {
                 case "MiniGameTrigger":
-                    _uimanager.GetComponent<MainSceneUIManager>().OpenLoadMiniGameScenePanel(true);
+                    _uimanager.GetComponent<MainSceneUIManager>().OpenLoadMiniGameScenePanel();
                     break;
 
                 case "ClosetTrigger":
-                    _uimanager.GetComponent<MainSceneUIManager>().OpenClosetPanel(true);
+                    _uimanager.GetComponent<MainSceneUIManager>().OpenClosetPanel();
                     break;
 
                 default:
                     Debug.Log("NoCase");
                     break;
             }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        switch (name)
-        {
-            case "MiniGameTrigger":
-                _uimanager.GetComponent<MainSceneUIManager>().OpenLoadMiniGameScenePanel(false);
-                break;
-
-            case "ClosetTrigger":
-                _uimanager.GetComponent<MainSceneUIManager>().OpenClosetPanel(false);
-                break;
-
-            default:
-                Debug.Log("NoCase");
-                break;
         }
     }
 }

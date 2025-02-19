@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     GameObject GM;
 
+    public GameObject BlurPanel;
     public GameObject ResultPanel;
     public GameObject Points;
 
@@ -23,22 +24,30 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Points.GetComponent<TextMeshProUGUI>().text = "Score : "+GM.GetComponent<MiniGameSceneManager>().YourScore;
+    }
+
+    private void LateUpdate()
+    {
+        Points.GetComponent<TextMeshProUGUI>().text = "Score : " + GM.GetComponent<MiniGameSceneManager>().YourScore;
     }
 
     public void OpenStartPanel()
     {
         Time.timeScale = 0;
+        BlurPanel.SetActive(true);
 
-        HighScore.GetComponent<TextMeshProUGUI>().text = "High Score : " +  GM.GetComponent<MiniGameSceneManager>().HighScore;
+        HighScore.GetComponent<TextMeshProUGUI>().text = "High Score : " + GM.GetComponent<MiniGameSceneManager>().HighScore;
         YourScore.GetComponent<TextMeshProUGUI>().text = "Your Score : " + GM.GetComponent<MiniGameSceneManager>().YourScore;
 
         ResultPanel.SetActive(true);
     }
 
-    public void ClickStartButton ()
+    public void ClickStartButton()
     {
+        BlurPanel.SetActive(false);
+
         GM.GetComponent<MiniGameSceneManager>().StartMiniGame();
+
         ResultPanel.SetActive(false);
     }
 }

@@ -50,7 +50,10 @@ public class MiniGamePlayerCtrl : MonoBehaviour
         if (collision.CompareTag("Point"))
         {
             Debug.Log("Player Get The Point");
+            if (GameObject.Find( "GM" ) != null)
+            {
+                GameObject.Find("GM").GetComponent<MiniGameSceneManager>().YourScore += 1;
+            }
         }
-        GameObject.Find("GM").GetComponent<MiniGameSceneManager>().YourScore += 1;
     }
 }

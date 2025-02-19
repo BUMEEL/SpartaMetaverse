@@ -10,13 +10,23 @@ public class MiniGameSceneManager : MonoBehaviour
 
     public int HighScore;
     public int YourScore;
+    public GameObject NewBieText;
 
     public GameObject Player;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        if (PlayerPrefs.HasKey("BestScore"))
+        {
+            NewBieText.SetActive(false);
+            HighScore = PlayerPrefs.GetInt("BestScore");
+        }
+        else
+        {
+            NewBieText.SetActive(true);
+            HighScore = 0;
+        }
     }
 
     // Update is called once per frame
@@ -36,6 +46,7 @@ public class MiniGameSceneManager : MonoBehaviour
         Destroy(GameObject.FindWithTag("Player"));
 
         YourScore = 0;
+        NewBieText.SetActive(false);
 
         GameObject[] Walls =GameObject.FindGameObjectsWithTag("Point");
         for (int i = 0; i <Walls.Length; i++)
@@ -75,6 +86,7 @@ public class MiniGameSceneManager : MonoBehaviour
         if (YourScore > HighScore)
         {
             HighScore = YourScore;
+            PlayerPrefs.SetInt("BestScore", HighScore);
             Debug.Log("New HighScore!!!");
         }
     }
