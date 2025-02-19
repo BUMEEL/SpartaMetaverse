@@ -31,6 +31,8 @@ public class WallCtrl : MonoBehaviour
             Debug.Log("Random Position End");
 
             GameObject.Find("GM").GetComponent<MiniGameSceneManager>().InsWalls(2);
+
+            Destroy(gameObject);
         }
     }
 }

@@ -39,7 +39,9 @@ public class MiniGamePlayerCtrl : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {
             Debug.Log("Collision Has Met");
-            GameObject.Find("GM").GetComponent<MiniGameSceneManager>().EndMiniGame();
+            Time.timeScale = Mathf.Lerp(1, 0, 5);
+            GameObject.Find("GM").GetComponent<MiniGameSceneManager>().NewHighScoreCheck();
+            GameObject.Find("UIManager").GetComponent<UIManager>().OpenStartPanel();
         }
     }
 

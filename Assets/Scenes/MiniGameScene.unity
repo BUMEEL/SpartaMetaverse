@@ -1255,6 +1255,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ResultPanel: {fileID: 400415956}
+  Points: {fileID: 1923099245}
+  HighScore: {fileID: 1830794063}
+  YourScore: {fileID: 607596077}
 --- !u!1 &1657191070
 GameObject:
   m_ObjectHideFlags: 0

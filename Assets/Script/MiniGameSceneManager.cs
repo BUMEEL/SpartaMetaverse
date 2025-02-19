@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class MiniGameSceneManager : MonoBehaviour
 {
@@ -34,14 +35,16 @@ public class MiniGameSceneManager : MonoBehaviour
 
     public void StartMiniGame()
     {
-        GameObject[] Walls =GameObject.FindGameObjectsWithTag("Point");
         Destroy(GameObject.FindWithTag("Player"));
 
+        YourScore = 0;
+
+        GameObject[] Walls =GameObject.FindGameObjectsWithTag("Point");
         for (int i = 0; i <Walls.Length; i++)
         {
             Destroy(Walls[i]);
         }
-        YourScore = 0;
+
         for (int i = 0; i < 4; i++)
         {
             InsWalls(i);
@@ -65,13 +68,13 @@ public class MiniGameSceneManager : MonoBehaviour
 
     public void EndMiniGame()
     {
-        Time.timeScale = 0;
-        GameObject.Find("UIManager").GetComponent<UIManager>().OpenStartPanel();
+        Time.timeScale = 1;
+        SceneManager.LoadSceneAsync(0);
     }
 
-    public void NewHighScore()
+    public void NewHighScoreCheck()
     {
-        if (HighScore < YourScore)
+        if (YourScore > HighScore)
         {
             HighScore = YourScore;
             Debug.Log("New HighScore!!!");
