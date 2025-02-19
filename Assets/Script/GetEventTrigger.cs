@@ -1,14 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.SceneManagement;
-using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
-
 
 public class GetEventTrigger : MonoBehaviour
 {
-    public GameObject _uimanager;
+    GameObject _uimanager;
 
     // Start is called before the first frame update
     void Start()
@@ -24,20 +20,22 @@ public class GetEventTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        switch (name)
+        if (collision.CompareTag("Player"))
         {
-            case "MiniGameTrigger":
-                _uimanager.GetComponent<MainSceneUIManager>().OpenLoadMiniGameScenePanel(true);
-                break;
+            switch (name)
+            {
+                case "MiniGameTrigger":
+                    _uimanager.GetComponent<MainSceneUIManager>().OpenLoadMiniGameScenePanel(true);
+                    break;
 
-            case "ClosetTrigger":
-                _uimanager.GetComponent<MainSceneUIManager>().OpenClosetPanel(true);
-                break;
+                case "ClosetTrigger":
+                    _uimanager.GetComponent<MainSceneUIManager>().OpenClosetPanel(true);
+                    break;
 
-            default:
-                Debug.Log("NoCase");
-                break;
+                default:
+                    Debug.Log("NoCase");
+                    break;
+            }
         }
     }
 

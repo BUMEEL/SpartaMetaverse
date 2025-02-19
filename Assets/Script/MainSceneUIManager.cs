@@ -10,9 +10,9 @@ public class MainSceneUIManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        OpenLoadMiniGameScenePanel(false);
+    {        
         OpenClosetPanel(false);
+        OpenLoadMiniGameScenePanel(false);
     }
 
     // Update is called once per frame

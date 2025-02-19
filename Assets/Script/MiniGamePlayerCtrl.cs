@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MiniGamePlayerCtrl : MonoBehaviour
 {
-    bool Flying = false;
     float speed;
     Rigidbody2D rb;
 
@@ -52,6 +51,6 @@ public class MiniGamePlayerCtrl : MonoBehaviour
         {
             Debug.Log("Player Get The Point");
         }
-        GameObject.Find("GM").GetComponent<MiniGameSceneManager>().YourScore++;
+        GameObject.Find("GM").GetComponent<MiniGameSceneManager>().YourScore += 1;
     }
 }

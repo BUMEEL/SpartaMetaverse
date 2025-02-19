@@ -17,7 +17,7 @@ public class PlayerCtrl : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("GetHealth", 0, 10);
+        //InvokeRepeating("GetHealth", 0, 10);
     }
 
     // Update is called once per frame
@@ -79,9 +79,9 @@ public class PlayerCtrl : MonoBehaviour
             Time.timeScale = 0;
         }
     }
-    void GetHealth()
-    {
-        if (Health <= 3)
-            Health++;
-    }
+    //void GetHealth()
+    //{
+    //    if (Health <= 3)
+    //        Health++;
+    //}
 }
