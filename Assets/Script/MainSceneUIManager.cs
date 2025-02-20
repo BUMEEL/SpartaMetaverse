@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainSceneUIManager : MonoBehaviour
 {
@@ -65,6 +65,15 @@ public class MainSceneUIManager : MonoBehaviour
             ClosetPanel.SetActive(false);
         }
     }
+
+    public void SetRGB ()
+    {
+        float Rvalue = GameObject.Find("RBar").GetComponent<Slider>().value;
+        float Gvalue = GameObject.Find("GBar").GetComponent<Slider>().value;
+        float Bvalue = GameObject.Find("BBar").GetComponent<Slider>().value;
+        GameObject.Find("Player").GetComponentInChildren<SpriteRenderer>().color = new Color(Rvalue *255, Gvalue*255, Bvalue * 255,255);
+    }
+
     public void OpenRidePanel()
     {
         if (!RidePanel.activeSelf)

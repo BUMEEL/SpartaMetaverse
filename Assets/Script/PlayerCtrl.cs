@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class PlayerCtrl : MonoBehaviour
 {
@@ -10,14 +9,14 @@ public class PlayerCtrl : MonoBehaviour
     public int NomSpeed = 3;
     public int RunSpeed = 5;
 
-    //public GameObject Bullets;
-    //public GameObject FirePosition;
-
     public float Health;
+
+    public bool IsRiding;
+    public int _RidingIndex;
 
     private void Start()
     {
-        //InvokeRepeating("GetHealth", 0, 10);
+
     }
 
     // Update is called once per frame
@@ -26,19 +25,27 @@ public class PlayerCtrl : MonoBehaviour
         float playerXMove = Input.GetAxis("Horizontal") * Speed * Time.deltaTime;
         float playeYMove = Input.GetAxis("Vertical") * Speed * Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (!IsRiding)
         {
-            Speed = RunSpeed;
+            //Speed = GetComponent<RideData>()._RidingIndex.
         }
         else
         {
-            Speed = NomSpeed;
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                Speed = RunSpeed;
+            }
+            else
+            {
+                Speed = NomSpeed;
+            }
         }
 
         if (playerXMove != 0 || playeYMove != 0)
         {
-            GetComponentInChildren<Animator>().SetBool("IsMove", true);
             this.transform.Translate(new Vector2(playerXMove, playeYMove));
+            GetComponentInChildren<Animator>().SetBool("IsMove", true);
+
             if (playerXMove != 0)
             {
                 if (playerXMove > 0)
@@ -65,23 +72,8 @@ public class PlayerCtrl : MonoBehaviour
             Speed = 100.0f;
         }
     }
-
-    // void Fire()
-    // {
-    //     Instantiate(Bullets, FirePosition.transform.position, FirePosition.transform.rotation);
-    // }
-
-    public void GetDamage(float BossBulletDamage)
+    public void CallRide(int RideIndex)
     {
-        Health -= BossBulletDamage;
-        if (Health <= 0)
-        {
-            Time.timeScale = 0;
-        }
+
     }
-    //void GetHealth()
-    //{
-    //    if (Health <= 3)
-    //        Health++;
-    //}
 }
