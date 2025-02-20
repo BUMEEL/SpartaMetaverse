@@ -7,13 +7,15 @@ using UnityEngine.UI;
 
 public class MainSceneUIManager : MonoBehaviour
 {
-    public GameObject LoadScenePanel;
-    public GameObject ClosetPanel;
-    public GameObject RidePanel;
+    public GameObject LoadScenePanel; //Loading MiniGame Panel
+    public GameObject ClosetPanel; // Set RGB of Player's Sprite Panel
+    public GameObject RidePanel; // No time for Dev this
 
     // Start is called before the first frame update
     void Start()
     {
+        GameObject.Find("Player").GetComponentInChildren<SpriteRenderer>().color = new Color(PlayerPrefs.GetFloat("PlayerRValue"), PlayerPrefs.GetFloat("PlayerGValue"), PlayerPrefs.GetFloat("PlayerBValue"));
+
         LoadScenePanel.SetActive(false);
         ClosetPanel.SetActive(false);
         RidePanel.SetActive(false);
@@ -25,12 +27,12 @@ public class MainSceneUIManager : MonoBehaviour
 
     }
 
-    public void OpenLoadMiniGameScenePanel()
+    public void OpenLoadMiniGameScenePanel() // Literally...
     {
         if (!LoadScenePanel.activeSelf)
         {
             string NewBieTXT;
-            if (!PlayerPrefs.HasKey("BestScore"))
+            if (!PlayerPrefs.HasKey("BestScore")) // if Player have been playing this minigame
             {
                 Debug.Log("NoKey");
                 NewBieTXT = "Do You Wanna Play MiniGames Or Something?";
@@ -66,15 +68,19 @@ public class MainSceneUIManager : MonoBehaviour
         }
     }
 
-    public void SetRGB ()
+    public void SetRGB() //Set Player's RGB In PlayerPrefabs
     {
         float Rvalue = GameObject.Find("RBar").GetComponent<Slider>().value;
         float Gvalue = GameObject.Find("GBar").GetComponent<Slider>().value;
         float Bvalue = GameObject.Find("BBar").GetComponent<Slider>().value;
-        GameObject.Find("Player").GetComponentInChildren<SpriteRenderer>().color = new Color(Rvalue *255, Gvalue*255, Bvalue * 255,255);
+        GameObject.Find("Player").GetComponentInChildren<SpriteRenderer>().color = new Color(Rvalue * 255, Gvalue * 255, Bvalue * 255, 255);
+
+        PlayerPrefs.SetFloat("PlayerRValue", Rvalue * 255);
+        PlayerPrefs.SetFloat("PlayerGValue", Rvalue * 255);
+        PlayerPrefs.SetFloat("PlayerBValue", Rvalue * 255);
     }
 
-    public void OpenRidePanel()
+    public void OpenRidePanel() // No time for dev this
     {
         if (!RidePanel.activeSelf)
         {
@@ -86,7 +92,7 @@ public class MainSceneUIManager : MonoBehaviour
         }
     }
 
-    public void DeleteScore()
+    public void DeleteScore() //delete the Score Recs in the Player's Prefabs
     {
         PlayerPrefs.DeleteAll();
     }

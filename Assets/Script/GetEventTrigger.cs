@@ -24,11 +24,11 @@ public class GetEventTrigger : MonoBehaviour
         {
             switch (name)
             {
-                case "MiniGameTrigger":
+                case "MiniGameTrigger": // to MiniGame
                     _uimanager.GetComponent<MainSceneUIManager>().OpenLoadMiniGameScenePanel();
                     break;
 
-                case "ClosetTrigger":
+                case "ClosetTrigger": // To Closet
                     _uimanager.GetComponent<MainSceneUIManager>().OpenClosetPanel();
                     break;
 

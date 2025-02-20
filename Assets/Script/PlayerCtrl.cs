@@ -16,22 +16,19 @@ public class PlayerCtrl : MonoBehaviour
 
     private void Start()
     {
-
+        IsRiding = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float playerXMove = Input.GetAxis("Horizontal") * Speed * Time.deltaTime;
-        float playeYMove = Input.GetAxis("Vertical") * Speed * Time.deltaTime;
-
-        if (!IsRiding)
+        if (IsRiding) // Just Build ...
         {
             //Speed = GetComponent<RideData>()._RidingIndex.
         }
         else
         {
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift)) //Sprint
             {
                 Speed = RunSpeed;
             }
@@ -40,6 +37,9 @@ public class PlayerCtrl : MonoBehaviour
                 Speed = NomSpeed;
             }
         }
+        float playerXMove = Input.GetAxis("Horizontal") * Speed * Time.deltaTime;
+        float playeYMove = Input.GetAxis("Vertical") * Speed * Time.deltaTime;
+
 
         if (playerXMove != 0 || playeYMove != 0)
         {
@@ -72,6 +72,12 @@ public class PlayerCtrl : MonoBehaviour
             Speed = 100.0f;
         }
     }
+
+    public void LateUpdate()
+    {
+        
+    }
+
     public void CallRide(int RideIndex)
     {
 

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
+[System.Serializable] //show in Unity Inspector
 public class Rides
 {
     public Sprite RideSprite;
@@ -15,7 +15,7 @@ public class Rides
 
 public class RideData : MonoBehaviour
 {
-    public Rides[] _rides;
+    public Rides[] _rides; // Set By Inspector View
 
     // Start is called before the first frame update
     void Start()
