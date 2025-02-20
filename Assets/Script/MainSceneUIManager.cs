@@ -14,8 +14,6 @@ public class MainSceneUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject.Find("Player").GetComponentInChildren<SpriteRenderer>().color = new Color(PlayerPrefs.GetFloat("PlayerRValue"), PlayerPrefs.GetFloat("PlayerGValue"), PlayerPrefs.GetFloat("PlayerBValue"));
-
         LoadScenePanel.SetActive(false);
         ClosetPanel.SetActive(false);
         RidePanel.SetActive(false);

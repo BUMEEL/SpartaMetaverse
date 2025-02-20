@@ -17,6 +17,10 @@ public class PlayerCtrl : MonoBehaviour
     private void Start()
     {
         IsRiding = false;
+        if (PlayerPrefs.HasKey("PlayerRValue"))
+        {
+            GameObject.Find("Player").GetComponentInChildren<SpriteRenderer>().color = new Color(PlayerPrefs.GetFloat("PlayerRValue"), PlayerPrefs.GetFloat("PlayerGValue"), PlayerPrefs.GetFloat("PlayerBValue"));
+        }
     }
 
     // Update is called once per frame
